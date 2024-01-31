@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* Style for the reference component */
+.reference-component {
+  width: 80%; /* or any width you prefer */
+  margin: auto; /* Centering the component if you want */
+  padding: 10px;
+  background-color: lightgrey; /* Just for visibility */
+  text-align: center;
+}
+
+/* Flex Container styles */
+.flex-container {
+  display: flex; /* Enables flex context for all its direct children */
+  justify-content: space-between; /* Separates the flex items */
+  width: 80%; /* Matches the width of the reference component */
+  margin: auto; /* Centering the flexbox if you want */
+  padding: 10px;
+  background-color: #f2f2f2; /* Just for visibility */
+}
+
+/* Flex Item styles */
+.flex-item {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  flex-grow: 1; /* Flex items will grow and fill the space */
+  margin: 0 10px; /* Space between flex items */
+}
