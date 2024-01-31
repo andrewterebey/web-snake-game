@@ -10,7 +10,7 @@
         <script src="snake.js"></script>
     </head>
     <body>
-        <h1>Snake</h1>
+        <h1 class="title">Snake</h1>
 
         <div class="reference-component">
             <canvas id="board"></canvas>
@@ -18,8 +18,15 @@
 
         <div class="flex-container">
             <div id="score">Score: 0 </div>
-            <div>Highscore: </div>
+            <h4 id="gg" style="display: none; font-weight: bold;">GAMEOVER</h4>
+            <div id="highscore">Highscore: 0</div>        
         </div>
+
+        <div class="button-container">
+            <button id="restartButton" type="button" class="btn btn-danger restart">Restart</button>
+        </div>
+        
+        
         
     </body>
 </html>

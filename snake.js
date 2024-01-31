@@ -22,7 +22,10 @@ var foodY = blockSize * 8;
 //game conditions and etc
 var gameOver = false;
 var score = 0;
+var highscore = 0;
 
+//Game off or not
+var paused = false;
 //on window load, load initializeGame function
 window.onload = function () {
   initializeGame();
@@ -35,6 +38,7 @@ function initializeGame() {
   board.height = rows * blockSize;
   board.width = cols * blockSize;
   context = board.getContext("2d");
+  document.getElementById("restartButton").style.display = "none";
 
   document.addEventListener("keydown", changeDirection);
   setInterval(update, 1000 / 10); // Call update function 10 times per second
@@ -43,6 +47,15 @@ function initializeGame() {
 //update function, (game updater thing)
 function update() {
   if (gameOver) {
+    paused = true;
+    document.getElementById("gg").style.display = "block";
+    document.getElementById("restartButton").style.display = "block";
+    document.getElementById("restartButton").onclick = function () {
+      restartGame();
+    };
+  }
+
+  if (paused) {
     return;
   }
   context.clearRect(0, 0, board.width, board.height); // Clear the canvas
@@ -67,6 +80,11 @@ function update() {
     placeFood();
     score++;
     document.getElementById("score").innerText = "Score: " + score;
+    if (score > highscore) {
+      highscore = score;
+      document.getElementById("highscore").innerText =
+        "HighScore: " + highscore;
+    }
   }
 
   for (let i = snakeBody.length - 1; i > 0; i--) {
@@ -93,13 +111,13 @@ function update() {
     snakeY >= rows * blockSize
   ) {
     gameOver = true;
-    alert("game over");
+    //alert("game over");
   }
 
   for (let i = 0; i < snakeBody.length; i++) {
     if (snakeX === snakeBody[i][0] && snakeY === snakeBody[i][1]) {
       gameOver = true;
-      alert("game over");
+      //alert("game over");
     }
   }
 }
@@ -123,4 +141,30 @@ function changeDirection(e) {
 function placeFood() {
   foodX = Math.floor(Math.random() * cols) * blockSize;
   foodY = Math.floor(Math.random() * rows) * blockSize;
+}
+
+function restartGame() {
+  // Reset game variables
+  clearInterval(update);
+
+  paused = false;
+  snakeX = blockSize * 4;
+  snakeY = blockSize * 8;
+  velocityX = 0;
+  velocityY = 0;
+  snakeBody = [];
+  foodX = blockSize * 12;
+  foodY = blockSize * 8;
+  gameOver = false;
+  score = 0;
+  document.getElementById("score").innerText = "Score: " + score;
+
+  // Clear the canvas and hide buttons
+  document.getElementById("restartButton").style.display = "none"; // Hide the restart button
+  document.getElementById("gg").style.display = "none";
+  context.clearRect(0, 0, board.width, board.height);
+
+  // Start the game again
+  document.addEventListener("keydown", changeDirection);
+  //setInterval(update, 1000 / 10); // Call update function 10 times per second
 }

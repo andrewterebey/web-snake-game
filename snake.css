@@ -3,12 +3,16 @@ body {
   text-align: center;
 }
 
+.title {
+  margin: 20px;
+}
+
 /* Style for the reference component */
 .reference-component {
-  width: 80%; /* or any width you prefer */
+  width: 35%; /* or any width you prefer */
   margin: auto; /* Centering the component if you want */
   padding: 10px;
-  background-color: lightgrey; /* Just for visibility */
+  background-color: white; /* Just for visibility */
   text-align: center;
 }
 
@@ -16,10 +20,10 @@ body {
 .flex-container {
   display: flex; /* Enables flex context for all its direct children */
   justify-content: space-between; /* Separates the flex items */
-  width: 80%; /* Matches the width of the reference component */
+  width: 35%; /* Matches the width of the reference component */
   margin: auto; /* Centering the flexbox if you want */
   padding: 10px;
-  background-color: #f2f2f2; /* Just for visibility */
+  background-color: white; /* Just for visibility */
 }
 
 /* Flex Item styles */
@@ -30,4 +34,15 @@ body {
   padding: 20px;
   flex-grow: 1; /* Flex items will grow and fill the space */
   margin: 0 10px; /* Space between flex items */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.restart {
+  display: none; /* Ensures the button is hidden by default */
+  /* ... (your other styles for the button) ... */
 }
